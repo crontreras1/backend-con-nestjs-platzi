@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, Query } from '@nestjs/common';
 
 @Controller('products')
 export class ProductsController {
@@ -15,6 +15,7 @@ export class ProductsController {
     }
   
     @Get(':id')
+    @HttpCode(HttpStatus.ACCEPTED)
     getProducts (@Param('id') id: string) {
       return {
         message: `Producto con id número: ${id}`
