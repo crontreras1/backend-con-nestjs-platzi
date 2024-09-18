@@ -49,8 +49,6 @@ export class ProductsController {
 
     @Delete(':id')
     delete(@Param('id') id: number) {
-      return {
-        message: `El producto con id ${id} a sido eliminado`
-      }
+      return this.productService.remove(+id)
     }
 }
