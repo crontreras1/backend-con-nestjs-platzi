@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, Query } from '@nestjs/common';
-import { ProductsService } from 'src/services/products/products.service';
+import { ProductsService } from 'src/services/products/products.service'
+import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
 
 @Controller('products')
 export class ProductsController {
@@ -21,7 +22,7 @@ export class ProductsController {
   
     @Get(':id')
     @HttpCode(HttpStatus.ACCEPTED)
-    getProducts ( @Param('id') id: string) {
+    getProducts ( @Param('id', ParseIntPipe) id: string) {
       // return {
       //   message: `Producto con id número: ${id}`
       // }
